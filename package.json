@@ -1,0 +1,25 @@
+{
+  "name": "express-giphy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sixhops/express-giphy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sixhops/express-giphy/issues"
+  },
+  "homepage": "https://github.com/sixhops/express-giphy#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "request": "^2.82.0"
+  }
+}
