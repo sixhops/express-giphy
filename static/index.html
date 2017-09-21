@@ -1,10 +1,19 @@
 <html>
   <head>
     <title>This is my Giphy Search</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
-    <input type="text" name="q" placeholder="Search for GIFs...">
-    <button type="button">Search!</button>
+    <header>
+      <h1>This is my Giphy Search</h1>
+    </header>
+    <div id="search-box">
+      <input type="text" name="q" placeholder="Search for GIFs...">
+      <button type="button">Search!</button>
+    </div>
+    <div id="results">
+
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.js"
@@ -14,13 +23,17 @@
     <script>
     $('button').on('click', function(e) {
       e.preventDefault();
-      var query = $('input').val();
-      $.get('/search/' + query).done(function(data) {
+      var searchTerm = $('input').val();
+      $('#results').empty();
+      $.get('/search/' + searchTerm).done(function(data) {
         // get data returned from the get route
-        console.log(data);
-        var div = $('<div>');
-        div.html(data);
-        $('body').append(div);
+        data.forEach(function(item) {
+          //data[0].images.downsized_medium.url
+          var image = $('<img>');
+          image.attr('src', item.images.downsized_medium.url);
+          image.addClass('gif');
+          $('#results').append(image);
+        });
       });
     });
 

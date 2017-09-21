@@ -12,21 +12,25 @@ app.get('/', function(req, res) {
 
 app.get('/search/:foo', function(req, res) {
   var url = 'http://api.giphy.com/v1/gifs/search?';
-  var q = req.params.foo;
-  var fullUrl = url + 'q=' + q;
+  // var q = req.params.foo;
+  // var fullUrl = url + 'q=' + q;
   request({
     method: 'GET',
     url: url,
     qs: {
       limit: 20,
       api_key: 'dc6zaTOxFJmzC',
-      q: req.params.foo
+      q: req.params.foo,
+      rating: 'g'
     },
     json: true
   }, function(error, response, body) {
     // var dataObj = JSON.parse(body);
     // res.render('index', {data: dataObj});
     res.send(body.data);
+
+    // Can i send a rendered ejs file to my index.html and have it appear?
+
     //res.render('index', {data: body.data});
   });
 });
