@@ -27,13 +27,15 @@
       $('#results').empty();
       $.get('/search/' + searchTerm).done(function(data) {
         // get data returned from the get route
-        data.forEach(function(item) {
-          //data[0].images.downsized_medium.url
-          var image = $('<img>');
-          image.attr('src', item.images.downsized_medium.url);
-          image.addClass('gif');
-          $('#results').append(image);
-        });
+        // data.forEach(function(item) {
+        //   //data[0].images.downsized_medium.url
+        //   var image = $('<img>');
+        //   image.attr('src', item.images.downsized_medium.url);
+        //   image.addClass('gif');
+        //   $('#results').append(image);
+        // });
+
+        $('#results').html(data);
       });
     });
 

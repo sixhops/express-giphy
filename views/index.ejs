@@ -1,2 +1,3 @@
-Hllo qorld
-<%= data %>
+<% data.forEach(function(gif) { %>
+  <img class="gif" src="<%= gif.images.downsized_medium.url %>">
+<% }); %>
