@@ -18,8 +18,9 @@
       $.get('/search/' + query).done(function(data) {
         // get data returned from the get route
         console.log(data);
-        // TODO: Add functionality that takes the data
-        //  and inserts it into the page
+        var div = $('<div>');
+        div.html(data);
+        $('body').append(div);
       });
     });
 

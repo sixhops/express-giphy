@@ -11,15 +11,23 @@ app.get('/', function(req, res) {
 });
 
 app.get('/search/:foo', function(req, res) {
-  var url = 'http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&';
+  var url = 'http://api.giphy.com/v1/gifs/search?';
   var q = req.params.foo;
   var fullUrl = url + 'q=' + q;
   request({
-    url: fullUrl
+    method: 'GET',
+    url: url,
+    qs: {
+      limit: 20,
+      api_key: 'dc6zaTOxFJmzC',
+      q: req.params.foo
+    },
+    json: true
   }, function(error, response, body) {
-    var dataObj = JSON.parse(body);
+    // var dataObj = JSON.parse(body);
     // res.render('index', {data: dataObj});
-    res.send(dataObj);
+    res.send(body.data);
+    //res.render('index', {data: body.data});
   });
 });
 
