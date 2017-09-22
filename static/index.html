@@ -3,8 +3,9 @@
     <title>This is my Giphy Search</title>
   </head>
   <body>
-    <input type="text" name="q" placeholder="Search for GIFs...">
-    <button type="button">Search!</button>
+    <input type="text" name="q" placeholder="The End Is Near...">
+    <button type="button">...Jesus Is Coming</button>
+    <span class="results"></span>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.js"
@@ -15,13 +16,24 @@
     $('button').on('click', function(e) {
       e.preventDefault();
       var query = $('input').val();
-      $.get('/search/' + query).done(function(data) {
+      $.get('/search/' + query).done(function(response) {
         // get data returned from the get route
-        console.log(data);
-        // TODO: Add functionality that takes the data
-        //  and inserts it into the page
-      });
-    });
+        console.log(response);
+        var results = response.data
+        $('#results').empty()
+        for(i = 0; i < 20; i++) {
+          var images = results[i].images.fixed_height_still
+
+          $("#results").append("<img src='" + images + "' height='350' width='350'>" + "<br>");
+
+          // var last_three = images.substr(images.length - 3)
+          //   if(last_three === 'jpg' || last_three === 'png' || last_three ==='jpeg' || last_three === 'gif') {
+          //   $("#results").append("<img src='" + images + "' height='350' width='350'>" + "<br>");
+          //   } else {
+          //   }
+      };
+    })
+  });
 
     </script>
   </body>
